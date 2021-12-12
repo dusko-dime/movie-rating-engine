@@ -1,9 +1,9 @@
 export interface SettingsInterface {
-    moviesLoadingStep: number
+  moviesLoadingStep: number;
 }
 
 const Settings: SettingsInterface = {
-    moviesLoadingStep: 10
-}
+  moviesLoadingStep: 10
+};
 
 export default Settings;

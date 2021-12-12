@@ -8,7 +8,7 @@ export const Container = styled.div`
   max-width: 400px;
   height: 100px;
   box-shadow: 0 0 4px #00000029;
-  min-width: 350px;        
+  min-width: 350px;
 `;
 
 export const TitleBox = styled.div`

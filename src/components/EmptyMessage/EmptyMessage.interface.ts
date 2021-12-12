@@ -1,4 +1,4 @@
 export interface Props {
-    title: string;
-    icon: any
+  title: string;
+  icon: any;
 }

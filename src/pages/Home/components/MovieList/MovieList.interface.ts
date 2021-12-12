@@ -1,5 +1,5 @@
-import {Movie} from '../../../../db/movies/structure';
+import { Movie } from '../../../../db/movies/structure';
 
 export interface Props {
-    movies: Movie[] | null
+  movies: Movie[] | null;
 }

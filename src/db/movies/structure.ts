@@ -1,26 +1,26 @@
 export enum Type {
-    MOVIE = 'Movie',
-    SHOW = 'TVShow'
+  MOVIE = 'Movie',
+  SHOW = 'TVShow'
 }
 
 export interface Movie {
-    title: string;
-    coverImage: string;
-    description: string;
-    releaseDate: Date;
-    cast: Actor[],
-    ratings?: Rating[],
-    averageRating: number,
-    totalNumberOfRatings: number,
-    type: Type
+  title: string;
+  coverImage: string;
+  description: string;
+  releaseDate: Date;
+  cast: Actor[];
+  ratings?: Rating[];
+  averageRating: number;
+  totalNumberOfRatings: number;
+  type: Type;
 }
 
 export interface Rating {
-    stars: number;
-    createdAt: Date;
+  stars: number;
+  createdAt: Date;
 }
 
 export interface Actor {
-    firstName: string;
-    lastName: string;
+  firstName: string;
+  lastName: string;
 }

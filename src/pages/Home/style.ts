@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import {Input, Switch} from "antd";
-import {AppButton} from "../../components/UIComponents/AppButton";
+import styled from 'styled-components';
+import { Input, Switch } from 'antd';
+import { AppButton } from '../../components/UIComponents/AppButton';
 
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  color: ${({theme: {colors}}) => colors.font};
+  color: ${({ theme: { colors } }) => colors.font};
   height: 100vh;
 `;
 
@@ -39,20 +39,21 @@ export const TopMoviesLabel = styled.p`
 
 export const TopMoviesSwitch = styled(Switch)`
   &.ant-switch-checked {
-    background-color: ${({theme: {colors}}) => colors.primary};
+    background-color: ${({ theme: { colors } }) => colors.primary};
   }
 `;
 
-export const SearchInput = styled(Input)` 
-   &.ant-input {
+export const SearchInput = styled(Input)`
+  &.ant-input {
     width: 70%;
     max-width: 400px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 4px ${({theme: {colors}}) => colors.primary};        
+    box-shadow: 0 0 4px ${({ theme: { colors } }) => colors.primary};
     border: none;
-    
-    &:active, &:focus {
+
+    &:active,
+    &:focus {
       outline: none;
     }
   }
@@ -72,6 +73,4 @@ export const LoadMoreButtonBox = styled.div`
   margin: 14px 0;
 `;
 
-export const LoadMoreButton = styled(AppButton)`
-  
-`;
+export const LoadMoreButton = styled(AppButton)``;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {AppButton} from '../../../../../../components/UIComponents/AppButton';
+import { AppButton } from '../../../../../../components/UIComponents/AppButton';
 
 export const Container = styled.div`
   display: flex;
@@ -7,25 +7,25 @@ export const Container = styled.div`
   min-height: 140px;
   width: 100%;
   max-width: 700px;
-  box-shadow: 0 0 4px #00000029;  
+  box-shadow: 0 0 4px #00000029;
   margin-bottom: 20px;
   border-radius: 6px;
   padding-bottom: 6px;
   align-items: center;
-  
+
   :last-of-type {
     margin-bottom: 5px;
-  }   
+  }
 `;
 
 export const ContainerInner = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   @media (max-width: 500px) {
     flex-direction: column;
     align-items: center;
-  }   
+  }
 `;
 
 export const ImageBox = styled.div`
@@ -39,7 +39,7 @@ export const ImageBox = styled.div`
     margin: 10px 0;
     display: flex;
     justify-content: center;
-  }  
+  }
 `;
 
 export const MovieImage = styled.img`
@@ -64,17 +64,17 @@ export const RatingBox = styled.div`
 `;
 
 export const MovieTitleBox = styled.div`
-  font-weight: ${({theme: {fontWeights}}) => fontWeights.bold};
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
   @media (max-width: 500px) {
     text-align: center;
-  }   
+  }
 `;
 
 export const MovieDescriptionBox = styled.div`
   font-size: 12px;
   @media (max-width: 500px) {
     text-align: center;
-  }  
+  }
 `;
 
 export const MovieCastBox = styled.div`
@@ -86,13 +86,13 @@ export const MovieCastBox = styled.div`
   @media (max-width: 500px) {
     text-align: center;
     justify-content: center;
-  }  
+  }
 `;
 
 export const MovieReleaseDateBox = styled.div`
   @media (max-width: 500px) {
     text-align: center;
-  }  
+  }
 `;
 
 export const StarIcon = styled.img`
@@ -109,7 +109,7 @@ export const RatingValueBox = styled.div`
 `;
 
 export const RatingValueInner = styled.div`
-  font-weight: ${({theme: {fontWeights}}) => fontWeights.bold};
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
   font-size: 16px;
   display: flex;
 `;
@@ -134,12 +134,12 @@ export const RatingCount = styled.p`
 
 export const ActorParagraph = styled.p`
   margin: 0 4px 0 0;
-  
+
   :after {
     content: '/';
     margin-left: 4px;
   }
-  
+
   :last-of-type {
     :after {
       content: '';
@@ -153,15 +153,17 @@ export const RateBox = styled.div`
   align-items: center;
 `;
 
-export const RateButton = styled(AppButton)<{isopen: number}>`
+export const RateButton = styled(AppButton)<{ isopen: number }>`
   &.ant-btn {
-    background: #FFF;
-    border: 1px solid ${({theme: {colors}}) => colors.primary};
+    background: #fff;
+    border: 1px solid ${({ theme: { colors } }) => colors.primary};
     height: 12px;
-    color: ${({isopen}) => isopen ? '#f50202' : '#0eb833'};
-    
-    &:active, &:hover, &:focus { 
-      color: ${({isopen}) => isopen ? '#f50202' : '#0eb833'};
+    color: ${({ isopen }) => (isopen ? '#f50202' : '#0eb833')};
+
+    &:active,
+    &:hover,
+    &:focus {
+      color: ${({ isopen }) => (isopen ? '#f50202' : '#0eb833')};
     }
   }
 `;
@@ -172,4 +174,3 @@ export const RatingInnerBox = styled.div`
   align-items: center;
   margin-bottom: 8px;
 `;
-
