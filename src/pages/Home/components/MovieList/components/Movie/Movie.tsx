@@ -96,7 +96,7 @@ export const Movie: React.FC<Props> = ({movie}) => {
                         <RatingValueBox>
                             <RatingValue>
                                 <RatingValueInner>{movie?.averageRating}</RatingValueInner>
-                                <RatingValueMax>/ 10</RatingValueMax>
+                                <RatingValueMax>/ 5</RatingValueMax>
                             </RatingValue>
                             <RatingCount>
                                 {movie?.totalNumberOfRatings || '-'} votes
@@ -109,7 +109,7 @@ export const Movie: React.FC<Props> = ({movie}) => {
                 </RatingBox>
             </ContainerInner>
             {isRateSectionOpen && <RateBox>
-                <Rate value={rate} count={10} onChange={onRateSelected}/>
+                <Rate value={rate} count={5} onChange={onRateSelected}/>
             </RateBox>}
         </Container>
     )

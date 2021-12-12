@@ -102,7 +102,7 @@ export const fetchMovies = async ({searchText, searchOffset, tvShowsMode}: Fetch
                     filteredMovies = filteredMovies.filter(movie => {
                         if (movie.title && movie.title.toLowerCase().includes(searchText.toLowerCase()))
                             return true;
-                        if (movie.description && movie.description.toLowerCase().includes(searchText.toLowerCase()))
+                        if (movie.description && (searchText.toLowerCase().split(' ').every(word => movie.description.split(' ').includes(word))))
                             return true;
                         if (movie.cast) {
                             const actorNames = movie.cast.map(actor => actor.firstName + ' ' + actor.lastName);

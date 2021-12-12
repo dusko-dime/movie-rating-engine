@@ -32,6 +32,7 @@ export const TopMoviesSwitchBox = styled.div`
 
 export const TopMoviesLabel = styled.p`
   font-size: 16px;
+  font-style: italic;
   padding-right: 12px;
   margin: 0;
 `;

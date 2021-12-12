@@ -82,7 +82,6 @@ const Home = () => {
                 setMovies(data as Movie[] | null);
                 setAppLoading(false);
             }
-            setAppLoading(false);
         } catch (e) {
             setAppLoading(false);
             setMovies(null);
@@ -123,7 +122,6 @@ const Home = () => {
                 }
 
             }
-            setAppLoading(false);
         } catch (e) {
             setMovies(null);
             setAppLoading(false);

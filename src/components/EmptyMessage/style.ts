@@ -7,7 +7,8 @@ export const Container = styled.div`
   width: 100%;
   max-width: 400px;
   height: 100px;
-  box-shadow: 0 0 4px #00000029 ;        
+  box-shadow: 0 0 4px #00000029;
+  min-width: 350px;        
 `;
 
 export const TitleBox = styled.div`
@@ -19,7 +20,7 @@ export const TitleBox = styled.div`
 
 export const IconBox = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   flex: 1;
   margin-left: 20px;
