@@ -50,26 +50,25 @@ const Home = () => {
   }, [isShowFilterActive]);
 
   useEffect(() => {
-    loadMoreMovieSearchResults();
+    if (searchOffset > 0) loadMoreMovieSearchResults();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchOffset]);
 
   const onShowSwitchChangeValue: (checked: boolean) => void = (checked) => {
     setShowFilterActive(checked);
+    setSearchOffset(0);
+    setAppLoading(false);
   };
 
   const onLoadMoreClick: () => void = () => {
     setSearchOffset((offset) => offset + offsetIncreaseStep);
     setAppLoading(false);
-    // setError({
-    //     text: 'Can\'t load data!'
-    // });
   };
 
   const fetchMovieSearchResults: () => void = async () => {
     try {
-      requestIdCounter.current += 1;
-      const requestId = requestIdCounter.current;
+      const requestId = (requestIdCounter.current += 1);
+      console.log(requestId, 'FETCH MOVIE SEARCH RESULTS');
       setAppLoading(true);
       const data = await fetchMovies({
         searchText:
@@ -93,14 +92,15 @@ const Home = () => {
 
   const loadMoreMovieSearchResults: () => void = async () => {
     try {
-      requestIdCounter.current += 1;
-      const requestId = requestIdCounter.current;
+      const requestId = (requestIdCounter.current += 1);
+      console.log(requestId, 'LOAD MORE MOVIE SEARCH RESULTS');
       let data = await fetchMovies({
         searchText:
           searchText && searchText.length > 1 ? searchText : undefined,
         searchOffset,
         tvShowsMode: isShowFilterActive
       });
+      console.log('AFTER LOAD', requestId, requestIdCounter.current);
       if (requestId === requestIdCounter.current) {
         let newMovies: Movie[] | null = [];
         if (data) {
@@ -118,6 +118,7 @@ const Home = () => {
             message.warn("Can't find more movies to load");
           }
         }
+        setAppLoading(false);
       }
     } catch (e) {
       setMovies(null);

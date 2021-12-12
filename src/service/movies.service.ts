@@ -77,8 +77,8 @@ export const fetchMovies = async ({
 
             switch (knownPhrase.key) {
               case PhraseKeys.AtLeastNumberOfStars:
-                // @ts-ignore
                 searchNumber = parseFloat(
+                  // @ts-ignore
                   searchText.match(/[+-]?([0-9]*[.])?[0-9]+/g)[0]
                 );
                 filteredMovies = filteredMovies.filter(
@@ -86,8 +86,8 @@ export const fetchMovies = async ({
                 );
                 break;
               case PhraseKeys.NumberOfStars:
-                // @ts-ignore
                 searchNumber = parseFloat(
+                  // @ts-ignore
                   searchText.match(/[+-]?([0-9]*[.])?[0-9]+/g)[0]
                 );
                 filteredMovies = filteredMovies.filter(
@@ -123,15 +123,20 @@ export const fetchMovies = async ({
           filteredMovies = filteredMovies.filter((movie) => {
             if (
               movie.title &&
-              movie.title.toLowerCase().includes(searchText.toLowerCase())
+              movie.title
+                .toLowerCase()
+                .includes(searchText.trim().toLowerCase())
             )
               return true;
             if (
               movie.description &&
               searchText
+                .trim()
                 .toLowerCase()
                 .split(' ')
-                .every((word) => movie.description.split(' ').includes(word))
+                .every((word) =>
+                  movie.description.toLowerCase().split(' ').includes(word)
+                )
             )
               return true;
             if (movie.cast) {

@@ -30,6 +30,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
   const { title, description } = movie || {};
   const [isRateSectionOpen, setRaceSectionOpen] = useState<boolean>(false);
   const [rate, setRate] = useState<number>(0);
+  const [isPostRateRequestSent, setPostRateRequestSent] =
+    useState<boolean>(false);
 
   const movieCastMemo = useMemo(() => {
     if (movie?.cast && movie?.cast?.length > 0) {
@@ -59,13 +61,16 @@ export const Movie: React.FC<Props> = ({ movie }) => {
 
     // Mocked functionality
     try {
+      setPostRateRequestSent(true);
       setRate(starCount);
       await postRating({ movieId: '1', numberOfStars: starCount });
       setTimeout(() => {
+        setPostRateRequestSent(false);
         setRaceSectionOpen(false);
       }, 1000);
       message.success('Thank you for your ratings!');
     } catch (e) {
+      setPostRateRequestSent(false);
       console.error(e);
       message.error("Can't send ratings. Try again!");
     }
@@ -108,7 +113,12 @@ export const Movie: React.FC<Props> = ({ movie }) => {
       </ContainerInner>
       {isRateSectionOpen && (
         <RateBox>
-          <Rate value={rate} count={5} onChange={onRateSelected} />
+          <Rate
+            disabled={isPostRateRequestSent}
+            value={rate}
+            count={5}
+            onChange={onRateSelected}
+          />
         </RateBox>
       )}
     </Container>
