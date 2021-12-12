@@ -169,6 +169,7 @@ export const RateButton = styled(AppButton)<{isopen: number}>`
 export const RatingInnerBox = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-bottom: 8px;
 `;
 

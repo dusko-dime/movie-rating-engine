@@ -24,22 +24,13 @@ import {Props} from './interface';
 import {useMemo, useState} from 'react';
 import {formatDate} from '../../../../../../util/formatDate';
 import {message, Rate} from 'antd';
+import {postRating} from "../../../../../../service/movies.service";
 
 export const Movie: React.FC<Props> = ({movie}) => {
 
     const {title, description} = movie || {};
     const [isRateSectionOpen, setRaceSectionOpen] = useState<boolean>(false);
     const [rate, setRate] = useState<number>(0);
-
-    // const calculateRating = () => {
-    //     if(movie && movie.ratings && movie.ratings.length > 0) {
-    //         let totalStars = 0;
-    //         movie.ratings?.forEach((rating) => {
-    //             totalStars += rating.stars || 0;
-    //         });
-    //         return totalStars / movie.ratings.length;
-    //     } return 0;
-    // }
 
     const movieCastMemo = useMemo(() => {
         if(movie?.cast && movie?.cast?.length > 0) {
@@ -54,13 +45,29 @@ export const Movie: React.FC<Props> = ({movie}) => {
         setRaceSectionOpen(raceSectionOpen => !raceSectionOpen);
     }
 
-    const onRateSelected: (starCount: number) => void = (starCount) => {
-        //TODO Api Call
-        setRate(starCount);
-        setTimeout(() => {
-            setRaceSectionOpen(false);
-        }, 2000)
-        message.success('Thank you for your ratings!');
+    const onRateSelected: (starCount: number) => void = async (starCount) => {
+        // Api Call - if endpoints were made
+        // try {
+        //    await postRatingApi({movieId: movie.id, numberOfStars: starCount);
+        //    setRate(starCount);
+        //    message.success('Ratings sent');
+        // } catch (e) {
+        //    console.error(e);
+        //    message.error('Can\'t send ratings. Try again!');
+        // }
+
+        // Mocked functionality
+        try {
+            setRate(starCount);
+            await postRating({movieId: '1', numberOfStars: starCount});
+            setTimeout(() => {
+                setRaceSectionOpen(false);
+            }, 1000)
+            message.success('Thank you for your ratings!');
+        } catch (e) {
+            console.error(e);
+            message.error('Can\'t send ratings. Try again!');
+        }
     }
 
     return (
@@ -88,12 +95,11 @@ export const Movie: React.FC<Props> = ({movie}) => {
                         <StarImage width={30} height={30}></StarImage>
                         <RatingValueBox>
                             <RatingValue>
-                                {/*<RatingValueInner>{calculateRating()}</RatingValueInner>*/}
                                 <RatingValueInner>{movie?.averageRating}</RatingValueInner>
                                 <RatingValueMax>/ 10</RatingValueMax>
                             </RatingValue>
                             <RatingCount>
-                                {movie?.ratings?.length || 0} votes
+                                {movie?.totalNumberOfRatings || '-'} votes
                             </RatingCount>
                         </RatingValueBox>
                     </RatingInnerBox>

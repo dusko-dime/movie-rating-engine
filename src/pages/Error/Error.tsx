@@ -22,7 +22,7 @@ export const Error = () => {
             }
             {
                 error?.text && <TitleBox>
-                    {error.text}
+                    {error.text || 'Error happened'}
                 </TitleBox>
             }
             <BackButtonBox>

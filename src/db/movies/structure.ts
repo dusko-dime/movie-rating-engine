@@ -11,6 +11,7 @@ export interface Movie {
     cast: Actor[],
     ratings?: Rating[],
     averageRating: number,
+    totalNumberOfRatings: number,
     type: Type
 }
 
