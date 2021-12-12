@@ -30,7 +30,7 @@ const Home = () => {
   const [searchOffset, setSearchOffset] = useState<number>(0);
   const [isShowFilterActive, setShowFilterActive] = useState<boolean>(false);
   const requestIdCounter = useRef(1);
-  const [moreItemsExist, setMoreItemsExist] = useState(true);
+  const [moreItemsExist, setMoreItemsExist] = useState<boolean>(true);
   const allowTextSearchRequest = useRef(true);
 
   useEffect(() => {
@@ -68,7 +68,6 @@ const Home = () => {
   const fetchMovieSearchResults: () => void = async () => {
     try {
       const requestId = (requestIdCounter.current += 1);
-      console.log(requestId, 'FETCH MOVIE SEARCH RESULTS');
       setAppLoading(true);
       const data = await fetchMovies({
         searchText:
@@ -93,14 +92,12 @@ const Home = () => {
   const loadMoreMovieSearchResults: () => void = async () => {
     try {
       const requestId = (requestIdCounter.current += 1);
-      console.log(requestId, 'LOAD MORE MOVIE SEARCH RESULTS');
       let data = await fetchMovies({
         searchText:
           searchText && searchText.length > 1 ? searchText : undefined,
         searchOffset,
         tvShowsMode: isShowFilterActive
       });
-      console.log('AFTER LOAD', requestId, requestIdCounter.current);
       if (requestId === requestIdCounter.current) {
         let newMovies: Movie[] | null = [];
         if (data) {
